@@ -1,70 +1,87 @@
+<!-- HEADER -->
 <header>
-    <div class="container">
+  <div class="container">
     <h1>Test Info Tech Systems</h1>
   </div>
 </header>
+<!-- HEADER -->
 <div class="container">
   <div class="box">
-  <h2>Lista de Usuarios</h2>
+    <h2>Lista de Usuarios</h2>
+    <!-- TABLA DE USUARIOS -->
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Celular</th>
+          <th>Web</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let res of data">
+            <td>{{res.id}}</td>
+            <td>{{res.name}}</td>
+            <td>{{res.username}}</td>
+            <td>
+              <a href="mailto:{{res.email}}">{{res.email}}</a>
+            </td>
+            <td>
+              <a href="tel:{{res.phone}}">{{res.phone}}</a>
+            </td>
+            <td>
+              <a href="http://{{res.website}}" target="_blank">{{res.website}}</a>
+            </td>
+            <td>
+              <button (click)="detalle(res.id,res)" class="btn-primary btn btn-sm">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <!-- Ventana Modal -->
+              <div id="{{res.id}}" class="modal hide">
+                <div class="cont-header">
+                  <h2>Mas Información</h2>
+                  <a (click)="close(res.id)" class="close">X</a>
+                </div>
+                <div class="cont-body">
+                  <ul class="pretty">
+                    <li>
+                      Empresa:
+                      <b>{{res.company.name}}</b>
+                    </li>
+                    <li>
+                      Lema:
+                      <b>{{res.company.catchPhrase}} / {{res.company.bs}}</b>
+                    </li>
+                    <li>
+                      Dirección:
+                      <b>{{res.address.street}}</b>
+                    </li>
+                    <li>
+                      Hotel:
+                      <b>{{res.address.suite}}</b>
+                    </li>
+                    <li>
+                      Ciudad:
+                      <b>{{res.address.city}}</b>
+                    </li>
+                    <li>
+                      Código Postal:
+                      <b>{{res.address.zipcode}}</b>
+                    </li>
+                  </ul>
+                  <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/place/{{res.address.geo.lat}},{{res.address.geo.lng}}">Ver Mapa</a>
 
-  <div class="table-responsive">
-    <table class="table table-striped">
-    <thead>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Usuario</th>
-      <th>Email</th>
-      <th>Celular</th>
-      <th>Web</th>
-      <th>Acciones</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let res of data">
-        <td>{{res.id}}</td>
-        <td>{{res.name}}</td>
-        <td>{{res.username}}</td>
-        <td><a href="mailto:{{res.email}}">{{res.email}}</a></td>
-        <td><a href="tel:{{res.phone}}">{{res.phone}}</a></td>
-        <td><a href="http://{{res.website}}" target="_blank">{{res.website}}</a></td>
-        <td>
-          <button (click)="detalle(res.id,res)" class="btn-primary btn btn-sm"><i class="fas fa-info-circle"></i></button>
-          <!-- Ventana Modal -->
-          <div id="{{res.id}}" class="modal hide">
-              <div class="cont-header">
-                <h2>Mas Información</h2>
-                <a (click)="close(res.id)" class="close">X</a>
+                </div>
               </div>
-              <div class="cont-body">
-                <ul class="pretty">
-                  <li>
-                    Compañia: <b>{{res.company.name}}</b>
-                  </li>
-                  <li>
-                    Frase: <b>{{res.company.catchPhrase}} / {{res.company.bs}}</b>
-                  </li>
-                  <li>
-                    Dirección: <b>{{res.address.street}}</b>
-                  </li>
-                  <li>
-                    Hotel: <b>{{res.address.suite}}</b>
-                  </li>
-                  <li>
-                    Ciudad: <b>{{res.address.city}}</b>
-                  </li>
-                  <li>
-                    Código Postal: <b>{{res.address.zipcode}}</b>
-                  </li>
-                </ul>
-                <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/place/{{res.address.geo.lat}},{{res.address.geo.lng}}">Ver Mapa</a>
-
-              </div>
-            </div>
-        </td>
+            </td>
 
 
-      </tr>
-    </tbody>
-  </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- TABLA DE USUARIOS -->
   </div>
-</div>
 </div>
